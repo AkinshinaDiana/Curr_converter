@@ -28,8 +28,23 @@ class myCurrencyConv(QtWidgets.QMainWindow):
         self.ui.input_amount_rur.setText('')
 
     def my_converter(self):
-        from forex_python.converter import CurrencyRates
-        c = CurrencyRates()
+        # from forex_python.converter import CurrencyRates
+        # c = CurrencyRates()
+        from currency_converter import CurrencyConverter
+        c = CurrencyConverter()
+        input_amount_usd = float(self.ui.input_amount_usd.text())
+        output_amount_usd = round(c.convert(input_amount_usd, 'USD', 'USD'), 2)
+        self.ui.input_amount_usd.setText(str(output_amount_usd))
+        output_amount_euro = round(c.convert(input_amount_usd, 'USD', 'EUR'), 2)
+        self.ui.input_amount_euro.setText(str(output_amount_euro))
+        output_amount_pln = round(c.convert(input_amount_usd, 'USD', 'PLN'), 2)
+        self.ui.input_amount_pln.setText(str(output_amount_pln))
+        output_amount_byn = round(c.convert(input_amount_usd, 'USD', 'JPY'), 2)
+        self.ui.input_amount_byn.setText(str(output_amount_byn))
+        output_amount_cny = round(c.convert(input_amount_usd, 'USD', 'CNY'), 2)
+        self.ui.input_amount_cny.setText(str(output_amount_cny))
+        output_amount_rur = round(c.convert(input_amount_usd, 'USD', 'AUD'), 2)
+        self.ui.input_amount_rur.setText(str(output_amount_rur))
 
         # input_amount_usd = float(self.ui.input_amount_usd.text())
         # output_amount_usd = round(c.convert('USD', 'USD', input_amount_usd), 2)
@@ -45,19 +60,19 @@ class myCurrencyConv(QtWidgets.QMainWindow):
         # output_amount_rur = round(c.convert('USD', 'AUD', input_amount_usd), 2) #нет данных по рос.руб.
         # self.ui.input_amount_rur.setText(str(output_amount_rur))
 
-        input_amount_euro = float(self.ui.input_amount_euro.text())
-        output_amount_euro = round(c.convert('EUR', 'EUR', input_amount_euro), 2)
-        self.ui.input_amount_euro.setText(str(output_amount_euro))
-        output_amount_usd = round(c.convert('EUR', 'USD', input_amount_euro), 2)
-        self.ui.input_amount_usd.setText(str(output_amount_usd))
-        output_amount_pln = round(c.convert('EUR', 'PLN', input_amount_euro), 2)
-        self.ui.input_amount_pln.setText(str(output_amount_euro))
-        output_amount_byn = round(c.convert('EUR', 'JPY', input_amount_euro), 2)  # нет данных по BYN
-        self.ui.input_amount_byn.setText(str(output_amount_byn))
-        output_amount_cny = round(c.convert('EUR', 'CNY', input_amount_euro), 2)
-        self.ui.input_amount_cny.setText(str(output_amount_cny))
-        output_amount_rur = round(c.convert('EUR', 'AUD', input_amount_euro), 2)  # нет данных по рос.руб.
-        self.ui.input_amount_rur.setText(str(output_amount_rur))
+        # input_amount_euro = float(self.ui.input_amount_euro.text())
+        # output_amount_euro = round(c.convert('EUR', 'EUR', input_amount_euro), 2)
+        # self.ui.input_amount_euro.setText(str(output_amount_euro))
+        # output_amount_usd = round(c.convert('EUR', 'USD', input_amount_euro), 2)
+        # self.ui.input_amount_usd.setText(str(output_amount_usd))
+        # output_amount_pln = round(c.convert('EUR', 'PLN', input_amount_euro), 2)
+        # self.ui.input_amount_pln.setText(str(output_amount_euro))
+        # output_amount_byn = round(c.convert('EUR', 'JPY', input_amount_euro), 2)  # нет данных по BYN
+        # self.ui.input_amount_byn.setText(str(output_amount_byn))
+        # output_amount_cny = round(c.convert('EUR', 'CNY', input_amount_euro), 2)
+        # self.ui.input_amount_cny.setText(str(output_amount_cny))
+        # output_amount_rur = round(c.convert('EUR', 'AUD', input_amount_euro), 2)  # нет данных по рос.руб.
+        # self.ui.input_amount_rur.setText(str(output_amount_rur))
         # # input_amount_pln = float(self.ui.input_amount_pln.text())
         # # input_amount_byn = float(self.ui.input_amount_byn.text())
         # # input_amount_cny = float(self.ui.input_amount_byn.text())
